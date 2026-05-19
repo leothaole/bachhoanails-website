@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="TL Monogram Icon — Bách Hóa Nails">
+  <defs>
+    <radialGradient id="bg2" cx="45%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FFE8F4"/>
+    </radialGradient>
+    <filter id="sh2">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#1A1A2E" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Navy base -->
+  <circle cx="60" cy="60" r="58" fill="#1A1A2E" filter="url(#sh2)"/>
+  <!-- Gold ring -->
+  <circle cx="60" cy="60" r="53" fill="#FFD700"/>
+  <!-- Pink ring -->
+  <circle cx="60" cy="60" r="49" fill="#E91E8C"/>
+  <!-- Inner fill -->
+  <circle cx="60" cy="60" r="44" fill="url(#bg2)"/>
+
+  <!-- TL -->
+  <text x="60" y="76"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="42" font-weight="900"
+        text-anchor="middle"
+        fill="#1A1A2E"
+        letter-spacing="-2">TL</text>
+
+  <!-- Pink underline -->
+  <rect x="30" y="80" width="60" height="3" rx="1.5" fill="#E91E8C"/>
+</svg>

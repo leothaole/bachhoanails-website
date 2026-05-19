@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #F5831F;
+  --primary-dark: #D4650A;
+  --secondary: #1A1A2E;
+  --accent: #5BAFD6;
+  --background: #FFFAF6;
+  --header-h-mobile: 64px;
+  --header-h-desktop: 124px;
+}
+
+/* ── Reset ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* scroll offset so anchors clear sticky header */
+  scroll-padding-top: calc(var(--header-h-mobile) + 60px);
+}
+@media (min-width: 768px) {
+  html { scroll-padding-top: calc(var(--header-h-desktop) + 60px); }
+}
+body {
+  background-color: var(--background);
+  color: #1A1A1A;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* prevent horizontal overflow on all pages */
+  overflow-x: hidden;
+}
+
+/* ── iOS / Safari ────────────────────────── */
+/* Prevent zoom on input focus (iOS requires font-size ≥ 16px) */
+input, textarea, select {
+  font-size: 16px !important;
+}
+/* Smooth momentum scrolling on iOS */
+.overflow-x-auto, .no-scrollbar { -webkit-overflow-scrolling: touch; }
+/* Safe area for notch/home bar */
+.safe-top    { padding-top:    env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* ── Touch targets ───────────────────────── */
+/* All interactive elements ≥ 44×44px on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* suppress hover effects on touch */
+  .card-hover:hover { transform: none; box-shadow: none; }
+  .shine-effect::before { display: none; }
+}
+
+/* ── Reduced motion ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker-inner { animation: none; }
+}
+
+/* ── Backdrop-blur fallback (older iOS/Firefox) */
+@supports not (backdrop-filter: blur(1px)) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md { background-color: rgba(255,255,255,0.95) !important; }
+}
+
+/* ── Typography ──────────────────────────── */
+body { font-family: 'Inter', system-ui, sans-serif; }
+
+/* ── Utility components ──────────────────── */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white font-semibold px-6 py-3 rounded-full
+           hover:bg-primary-dark transition-all duration-300
+           shadow-lg hover:shadow-primary/40 hover:scale-105 active:scale-95
+           min-h-[44px] flex items-center justify-center;
+  }
+  .btn-outline {
+    @apply border-2 border-primary text-primary font-semibold px-6 py-3 rounded-full
+           hover:bg-primary hover:text-white transition-all duration-300
+           min-h-[44px] flex items-center justify-center;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  .section-title {
+    @apply font-heading text-xl sm:text-2xl md:text-3xl font-bold text-secondary;
+  }
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -75%;
+    width: 50%; height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+  }
+  .shine-effect:hover::before { left: 125%; }
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  .dot-pattern {
+    background-image: radial-gradient(circle, #E91E8C22 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+/* ── Scrollbar ───────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Ticker ──────────────────────────────── */
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker-inner { animation: ticker 40s linear infinite; white-space: nowrap; }
+.ticker-inner:hover { animation-play-state: paused; }
+
+/* ── Animations ──────────────────────────── */
+@keyframes fadeIn    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp   { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes float     { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes bounceSoft{ 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes pulseSoft { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+.animate-fade-in    { animation: fadeIn 0.5s ease; }
+.animate-slide-up   { animation: slideUp 0.4s ease; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-bounce-soft{ animation: bounceSoft 2s ease-in-out infinite; }
+.animate-pulse-soft { animation: pulseSoft 2s ease-in-out infinite; }
