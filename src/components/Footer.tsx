@@ -15,7 +15,7 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <img
-                src="/logo-main.png"
+                src="/logo-brand.png"
                 alt="BachHoa Nails"
                 className="h-20 w-auto object-contain"
               />

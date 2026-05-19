@@ -112,7 +112,7 @@ export default function Header() {
             <a href="/" className="flex items-center gap-3 flex-shrink-0 group min-h-[44px] ml-2 md:ml-4">
               <div className="h-[84px] w-[84px] md:h-[92px] md:w-[92px] rounded-full overflow-hidden flex-shrink-0 bg-white group-hover:scale-105 transition-transform duration-200">
                 <img
-                  src="/logo-main.png"
+                  src="/logo-brand.png"
                   alt="BachHoa Nails"
                   className="w-full h-full object-contain scale-[1.35] translate-x-[4px]"
                 />

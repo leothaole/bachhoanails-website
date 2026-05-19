@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: "Tất cả những gì thợ nails người Việt cần tại Mỹ",
     url: "https://bachhoanails.com",
     siteName: "Bách Hóa Nails",
-    images: [{ url: "/logo-main.png", width: 800, height: 800 }],
+    images: [{ url: "/logo-brand.png", width: 800, height: 800 }],
     locale: "vi_VN",
     type: "website",
   },
