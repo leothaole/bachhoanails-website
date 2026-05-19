@@ -42,7 +42,7 @@ export default function CategoryTabs() {
   return (
     <>
       {/* Sticky tab bar — offset = header 60px + nav 44px = 104px desktop, 64px mobile */}
-      <div className="bg-white border-b border-gray-200 sticky top-16 md:top-[104px] z-40">
+      <div className="bg-white border-b border-gray-200 sticky top-[90px] md:top-[140px] z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 relative">
           <button onClick={() => scroll("left")} aria-label="Cuộn trái"
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-11 h-11 bg-white shadow-md border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors">
